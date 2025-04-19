@@ -1,0 +1,26 @@
+<div class="view-cards-container">
+  <!-- Colonne de gauche : la liste -->
+  <div class="list-container">
+    <p class="dialog-text">Voici les cartes disponibles :</p>
+    <ul class="choices">
+      <li
+        *ngFor="let card of cards"
+        (click)="selectCard(card)"
+        [class.selected]="card.id === selectedCard?.id"
+      >
+        <span class="arrow">➤</span>
+        <span class="label">
+          {{ card.name }}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <app-show-card
+    *ngIf="selectedCard"
+    [selectedCard]="selectedCard"
+    [selectedDescription]="selectedDescription"
+  />
+</div>
+
+
