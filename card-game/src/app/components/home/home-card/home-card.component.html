@@ -1,0 +1,32 @@
+<div class="home-card-container" [class.modal-open]="isModalVisible">
+  <div class="scene">
+    <div class="background"></div>
+    <img
+      src="/assets/images/character_2.png"
+      alt="Personnage"
+      class="character"
+    />
+  </div>
+
+  <div class="dialog-box" (click)="onTextClick()">
+    <div class="speaker-name">{{ current.speaker || 'Narrateur' }}</div>
+
+    <p class="dialog-text">{{ displayedText }}</p>
+
+    <ul class="choices" *ngIf="showChoices">
+      <li
+        *ngFor="let choice of current.choices; let i = index"
+        (click)="choose(choice); $event.stopPropagation()"
+        [style.animationDelay]="(0.6 * (i + 1)) + 's'"
+      >
+        <span class="arrow">➤</span>
+        <span class="label">{{ choice.label }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <app-modal
+    *ngIf="isModalVisible"
+    (close)="closeModal()"
+  ></app-modal>
+</div>

@@ -1,0 +1,25 @@
+<div class="delete-modal card-modal" (click)="$event.stopPropagation()">
+  <h2>Confirmer la suppression</h2>
+
+  <app-show-card
+    *ngIf="card"
+    [selectedCard]="card"
+    [selectedDescription]="'Voulez-vous réellement supprimer cette carte ?'"
+    (click)="$event.stopPropagation()"
+  ></app-show-card>
+
+  <div class="buttons">
+    <button
+      class="btn btn-cancel"
+      (click)="onCancel(); $event.stopPropagation()"
+    >
+      Non
+    </button>
+    <button
+      class="btn btn-confirm"
+      (click)="onConfirm(); $event.stopPropagation()"
+    >
+      Oui
+    </button>
+  </div>
+</div>
